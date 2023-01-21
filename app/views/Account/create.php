@@ -8,7 +8,11 @@
 <body>
 <div class="container">
 
-	<h1>Log in</h1>
+	<h1>Sign up</h1>
+
+    <?php if(isset($model['error']))
+        echo "<div class='alert alert-danger' role='alert'>$model[error]</div>";
+	?>
 
 	<form action="" method="post" class="form-horizontal">
         <div class="form-group">
@@ -23,6 +27,21 @@
         <div class="form-group">
             <label for="university_id">University</label>
             <input type="text" class="form-control" name="university_id" id="university_id" />
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="text" class="form-control" name="email" id="email" />
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="text" class="form-control" name="password" id="password" />
+        </div>
+
+        <div class="form-group">
+            <label for="confirm_password">Confirm Password</label>
+            <input type="text" class="form-control" name="confirm_password" id="confirm_password" />
         </div>
 
         <div class="form-group">
