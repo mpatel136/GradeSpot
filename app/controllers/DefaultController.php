@@ -4,7 +4,7 @@ class DefaultController extends Controller{
 		$person = $this->model('Person');
 		$people = $person->getAll();
 
-		$this->view('Default/allGood', $people);
+		$this->view('Default/home', $people);
 	}
 
 	public function create(){

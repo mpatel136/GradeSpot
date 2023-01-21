@@ -2,7 +2,7 @@
 class Person extends Model{
 	public $first_name;
 	public $last_name;
-    private $person_id;
+    public $person_id;
 
     public function __construct()
     {   
