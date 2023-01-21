@@ -6,7 +6,8 @@ class SessionController extends Controller{
             echo 'do not allow to join a session';
         }
         else {
-            echo "current ongoing session is: " . $session_id;
+            // echo "current ongoing session is: " . $session_id;
+            $this->view('Session/in_session');
         }
 	}
 
