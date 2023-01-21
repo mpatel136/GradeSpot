@@ -19,7 +19,7 @@ class SessionController extends Controller{
     }
 
     public function join() {
-        echo "joinging a session";
+        $this->view('Session/join');
     }
 
 
