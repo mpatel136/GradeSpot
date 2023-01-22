@@ -377,19 +377,19 @@ label.credentials {
   margin-top: 0px;
 }
 
-form {
+form.message {
   padding: 15px 25px;
   display: flex;
   gap: 10px;
   justify-content: center;
 }
 
-form label {
+form.message label {
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-input {
+form.message input {
   font-family: "Lato";
 }
 

@@ -79,7 +79,7 @@
                                 }
                             ?>
                         </div>
-                        <form name="message" action="">
+                        <form class="message" action="">
                             <input name="usermsg" type="text" id="usermsg" />
                             <input name="submitmsg" type="submit" id="submitmsg" value="Send" />
                         </form>
