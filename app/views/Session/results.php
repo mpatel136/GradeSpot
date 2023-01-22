@@ -19,20 +19,24 @@
 
     <!-- STYLE CSS -->
     <link rel="stylesheet" href="/css/style.css">
+    
 
 </head>
 
 
 
 <body>
+  
     <?php
     // var_dump($model['result']);
     $session_obj = $model['result'];
+    
     echo "
-      <table class='table'>
+      <table class='table' style='color: black'>
         <thead>
           <tr>
             <th scope='col'>Session</th>
+            <th scope='col'>Join</th>
             <th scope='col'>Subject</th>
             <th scope='col'>Number of participants</th>
             <th scope='col'>Room #</th>
@@ -41,13 +45,19 @@
         <tbody>
         ";
         foreach($session_obj as $obj) {
+          
           $session_token = $obj->session_token;
-          echo "
+
+
+      echo "
             <tr>
               <th>$session_token</th>
-              <td>TEST335</td>
-              <td>TEST</td>
-              <td>@mdo</td>
+              <th><form action='./join/{$session_token}'>
+                <input class='btn btn-primary' type='submit' value='Join Session' />
+            </form></th>
+              <td>$obj->subject_id</td>
+              <td>$obj->participant_count</td>
+              <td>$obj->room_id</td>
             </tr>
           ";
         }
