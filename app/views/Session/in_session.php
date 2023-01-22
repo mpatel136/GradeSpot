@@ -72,16 +72,12 @@
                 <div class="col-8">
                     <canvas id="whiteboard"></canvas>
                     <div>
-                        <button class="color-button" style="background-color: black;" onclick="setColor('black')"></button>
-                        <button class="color-button" style="background-color: red;" onclick="setColor('red')"></button>
-                        <button class="color-button" style="background-color: blue;" onclick="setColor('blue')"></button>
-                        <button class="color-button" style="background-color: green;" onclick="setColor('green')"></button>
-
-                        <button class="color-button" style="background-color: white;" onclick="setColor('white')"></button>
-                    </div>
-
-                    <div>
-                        <button onclick="saveAsPNGWithWhiteBg()">Save as PNG</button>
+                        <button class="color-button" style="background-color: black; display:inline-block;" onclick="setColor('black')"></button>
+                        <button class="color-button" style="background-color: red; display:inline-block;" onclick="setColor('red')"></button>
+                        <button class="color-button" style="background-color: blue; display:inline-block;" onclick="setColor('blue')"></button>
+                        <button class="color-button" style="background-color: green; display:inline-block;" onclick="setColor('green')"></button>
+                        <button class="color-button" style="background-color: white; display:inline-block;" onclick="setColor('white')"></button>
+                        <button style="display:inline-block; margin-left: 50%;" onclick="saveAsPNGWithWhiteBg()">Save as PNG</button>
                     </div>
                 </div>
 
@@ -95,9 +91,11 @@
                                 }
 
                                 echo "
-                                    <p class='welcome_chat'>Welcome, $current_user.<b></b></p>
+                                    <p onclick='myFunction()' class=''><a id='ask' href='#'>Ask the Presenter</a></p>
+                                    <p class=''><a id='exit_chat' href='\index'>Exit Chat</a></p>
                                 ";
                             ?>
+                            <!-- <p class='welcome_chat'>Welcome, $current_user.<b></b></p> -->
                             <!-- <p class="logout_chat"><a id="exit" href="#">Exit Chat</a></p> -->
                         </div>
                         <div id="chatbox">
@@ -106,6 +104,10 @@
                                     $contents = file_get_contents("log.html");          
                                     echo $contents;
                                 }
+                                echo "Khalid: test";
+                                echo "<br>Miraj: hello world";
+                                echo "<br>Emmanuel: I love PHP";
+                                echo "<br>Tim: #CONUHACKS";
                             ?>
                         </div>
                         <form class="message" action="">
@@ -149,6 +151,20 @@
             </div>
         </div>
     </body>
+
+    <script type="text/javascript">
+        function myFunction() {
+        let text;
+        let question = prompt("Please enter your question:");
+        if (question == null || question == "") {
+            text = "User cancelled the prompt.";
+        } else {
+            // text = "Hello " + question + "! How are you today?";
+            text = question;
+        }
+        // document.getElementById("demo").innerHTML = text;
+        }
+    </script>
 
     <script>
     // get reference to the canvas element
