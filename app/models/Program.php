@@ -18,5 +18,12 @@ class Program extends Model{
         return $stmt->fetch();
     }
 
+    public function getProgramName($program_id){
+        $stmt = self::$_connection->prepare("SELECT program_name FROM program WHERE program_id = :program_id");
+        $stmt->execute(['program_id'=>$program_id]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Program');
+        return $stmt->fetch();
+    }
+
 
 }
