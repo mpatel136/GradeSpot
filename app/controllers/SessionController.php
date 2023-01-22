@@ -13,12 +13,6 @@ class SessionController extends Controller{
         }
 	}
 
-    public function prepare_session() {
-        $name = "Miraj";
-        $_SESSION['current_user_name_in_chat'] = $name;
-        header('location:/session/index/3lkj3lkj3');
-    }
-
     public function create() {
         
         if(isset($_SESSION['account_id'])) {
@@ -51,8 +45,9 @@ class SessionController extends Controller{
             // $is_official = $_POST['is_official'];
 
             // create session model
+            $session_token = $this->getToken(20);
             $session = $this->model('Session');
-            $session->session_token = $this->getToken(20);
+            $session->session_token = $session_token;
             $session->university_id = $university_id;
             $session->program_id = $program_id;
             $session->subject_id = $subject_id;
@@ -60,14 +55,14 @@ class SessionController extends Controller{
             $session->room_id = $room_id;
             $session->is_in_person = $is_in_person;
             //$session->date = $date;
-            // $session->participant_count = $participant_count;
+            $session->participant_count = 1;
             // $session->status = $status;
             // $session->is_official = $is_official;
 
             $session->insert();
 
             //TODO: GO TO JOIN???
-            return header('location:/');
+            return header('location:/session/index/' . $session_token);
 
         }
 
@@ -75,8 +70,6 @@ class SessionController extends Controller{
 
     public function register() {
         $room_obj = null;
-
-        
 
         if(isset($_POST['register_room'])) {
             // uni id
@@ -88,6 +81,7 @@ class SessionController extends Controller{
             $session->session_token = $session_token;
             $session->university_id = $university_id;
             $session->room_id = $_SESSION['room_id_reg'];
+            $session->is_official = 1;
             
             $session->insertForUniversity();
 
@@ -179,7 +173,28 @@ class SessionController extends Controller{
     }
 
     public function join($session_token) {
-        $this->view('Session/join');
+        $session_obj = $this->model('Session')->getBySessionToken($session_token);
+
+        if(!isset($_POST['join_session'])) {
+            $this->view('Session/join', ['session'=>$session_obj]);
+        }
+        else {
+            $program = filter_input(INPUT_POST, 'program', FILTER_SANITIZE_STRING);
+            $subject = filter_input(INPUT_POST, 'subject', FILTER_SANITIZE_STRING);
+            
+            if($program != null && $subject != null) {
+                $session_obj->program_id = $program;
+                $session_obj->subject_id = $subject;
+                $session_obj->updateProgramAndSubject();
+            }
+            
+            // incrase the participant count in session table
+            $session_obj->participant_count++;
+            $session_obj->increaseParticipant();
+
+            header('location:/session/index/' . $session_token);
+
+        }
     }
 
 
