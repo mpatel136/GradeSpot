@@ -7,6 +7,15 @@
 @font-face {
   font-family: "Poppins-Regular";
   src: url("../fonts/poppins/Poppins-Regular.ttf"); }
+
+@font-face {
+    font-family: "Proxima";
+    src: url("../fonts/regular_proxima_nova.ttf"); }
+
+@font-face {
+    font-family: "Bariol";
+    src: url("../fonts/bariol_regular-webfont.ttf"); }
+
 @font-face {
   font-family: "Poppins-Medium";
   src: url("../fonts/poppins/Poppins-Medium.ttf"); }
@@ -288,4 +297,51 @@ button {
 .con-navbar {
   box-shadow: 0px 15px 10px -15px #111; 
   /* box-shadow: 0 4px 2px -2px gray; */
+}
+
+.mainheader {
+  text-transform: uppercase;
+  transform: translateY(160%);
+  margin-left: 30px;
+  font-size: 55px;
+  font-family: "Bariol" !important;
+  font-weight: bold;
+  color: #3e91f7;
+  letter-spacing: 3px;
+}
+
+.maintext {
+  transform: translateY(20%);
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.bg-home-content {
+  line-height: normal;
+  display: inline-block;
+  vertical-align: middle;
+  font-family: "Bariol" !important;
+}
+
+.bg-home-content button {
+  font-family: "Bariol" !important;
+  font-weight: bold;
+}
+
+.bg-home-content button.create-session-btn {
+  background: #fd9d4e;
+  border-color: #F99746;
+}
+
+.bg-home-content button.create-session-btn:hover {
+  background: #ec8a39;
+  border-color: #ec8a39;
 }

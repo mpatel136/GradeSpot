@@ -1,7 +1,7 @@
 <?php
 class DefaultController extends Controller{
 	public function index(){
-		echo "homepage";
+		$this->view('Default/index');
 	}
 
 }
