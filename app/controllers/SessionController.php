@@ -11,6 +11,12 @@ class SessionController extends Controller{
         }
 	}
 
+    public function prepare_session() {
+        $name = "Miraj";
+        $_SESSION['current_user_name_in_chat'] = $name;
+        header('location:/session/index/3lkj3lkj3');
+    }
+
     public function create() {
         
         if(!isset($_POST['create_session'])) {

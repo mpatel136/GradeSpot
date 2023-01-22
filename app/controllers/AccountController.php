@@ -67,5 +67,8 @@ class AccountController extends Controller{
 
     }
 
+    public function get_name(){
+        
+    }
 }
 ?>
