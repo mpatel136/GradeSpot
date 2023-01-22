@@ -26,62 +26,37 @@
 
 <body>
     <?php
-    $session_obj = $_SESSION["result"];
-    $count = 1;
-    echo '<link rel="stylesheet" href="/css/style.css">';
-    echo '<table class="table">
+    // var_dump($model['result']);
+    $session_obj = $model['result'];
+    echo "
+      <table class='table'>
         <thead>
           <tr>
-            <th scope="col">Session</th>
-            <th scope="col">Subject</th>
-            <th scope="col">Number of participants</th>
-            <th scope="col">Room #</th>
+            <th scope='col'>Session</th>
+            <th scope='col'>Subject</th>
+            <th scope='col'>Number of participants</th>
+            <th scope='col'>Room #</th>
           </tr>
-        </thead>';
-
-    foreach ($session_obj as $obj) {
-        echo '<tbody>
-                <tr>
-                <th scope="row">';
-        echo $count;
-        $count++;
-        echo '</th>
-                <td>';
-        echo $subject_id = $obj->subject_id;
-        echo '</td>
-                <td>';
-        echo $subject_id = $obj->participant_count;
-        echo '</td>
-                <td>';
-        echo $subject_id = $obj->room_id;
-        echo ' </td>
-                </tr>
-            </tbody>';
-        echo '</br>';
-    }
-    echo '</table>'
-    ;
+        </thead>
+        <tbody>
+        ";
+        foreach($session_obj as $obj) {
+          $session_token = $obj->session_token;
+          echo "
+            <tr>
+              <th>$session_token</th>
+              <td>TEST335</td>
+              <td>TEST</td>
+              <td>@mdo</td>
+            </tr>
+          ";
+        }
+        echo "
+        </tbody>
+      </table>
+    "
     ?>
 
 </body>
 
 </html>
-
-<!-- echo '<table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Subject</th>
-            <th scope="col">Number of participants</th>
-            <th scope="col">Room #</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">TEST1</th>
-            <td>TEST335</td>
-            <td>TEST</td>
-            <td>@mdo</td>
-          </tr>
-        </tbody>
-      </table>'; -->

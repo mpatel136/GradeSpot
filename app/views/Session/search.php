@@ -29,7 +29,7 @@
                 <h4 style="font-size: 40px; color: black; padding: 10px;">
                     <div class="row">
                         <div class="col-10">
-                            <div style="text-align: left;">
+                            <div style="text-align: left;" onclick="location.href='/'"  >
                                 GradeSpot
                             </div>
                         </div>

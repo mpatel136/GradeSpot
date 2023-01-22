@@ -166,7 +166,7 @@ class SessionController extends Controller{
             //var_dump($_SESSION["result"]);
 
             $this->view('Session/search');
-            $this->view('Session/results');
+            $this->view('Session/results', ['result'=>$session_obj]);
 
             
             // $this->view('Session/results');
@@ -178,7 +178,7 @@ class SessionController extends Controller{
         echo $_SESSION["result"];
     }
 
-    public function join() {
+    public function join($session_token) {
         $this->view('Session/join');
     }
 

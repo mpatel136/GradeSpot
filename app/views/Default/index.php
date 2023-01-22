@@ -27,7 +27,7 @@
 					<h4 style="font-size: 40px; color: black; padding: 10px;">
 						<div class="row">
 							<div class="col-10">
-								<div style="text-align: left; font-weight: bold;">
+								<div style="text-align: left; font-weight: bold;" onclick="location.href='/'">
 									GradeSpot
 								</div>
 							</div>
@@ -56,7 +56,7 @@
 						<div style="font-size: 18px; font-weight: bold; color: #3e91f7;">
 							Join an ongoing session by clicking below.
 						</div>
-						<button type="button" class="btn btn-primary" onclick="location.href='/session/join'">Join</button>
+						<button type="button" class="btn btn-primary" onclick="location.href='/session/search'">Join</button>
 					</div>
 					<div style="margin-top: 30px; margin-bottom: 28px;">
 						----------------
