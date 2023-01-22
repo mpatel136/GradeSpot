@@ -16,7 +16,7 @@ We built GradeSpot using PHP for application logic control. HTML, CSS, jQuery, a
 - Next time, it is more optimal to get an adequate amount of rest before and during crunch time.
 
 ## Team Members
-- Khalid Sadat
-- Emmanuel Sayoto
-- Timothy Mangulabnan
-- Miraj Singh
+- Khalid Sadat (Software Engineering Student)
+- Emmanuel Sayoto (Computer Science Student)
+- Timothy Mangulabnan (Computer Science Student)
+- Miraj Singh (Computer Science Student)
