@@ -34,27 +34,33 @@
                                 GradeSpot
                             </div>
                         </div>
-                        <div class="col-2" style="text-align: right;">
-                            <img src="/images/user.png" alt="Profile" width="28"
-                                onclick="location.href='/account/login'" style="cursor: pointer;">
+                        <div class="col-2 home-login-lb" style="text-align: right;">
+                            <?php
+                                if(isset($_SESSION['account_id'])) {
+                                    echo "
+                                        <span style='font-size: 20px;'>Khalid</span>
+                                    ";
+                                }
+                            ?>
+                            <img src="/images/user.png" alt="Profile" width="28" onclick="location.href='/account/login'" style="cursor: pointer; vertical-align: middle;">
                         </div>
                     </div>
             </div>
         </div>
 
-        <div class="container" style=" padding: 10px">
-        <h1 style="color:black; padding: 10px">Search for a GradeSpot Session</h1>
-        <form method="post">
-            <div class="row">
-                <div class="col-sm">
-                    <input type="search" placeholder="Search for a Program" class="form-control rounded" name="search_input" id="search_input" />
+        <div class="container" style=" padding: 10px;">
+            <h1 style="color:black; padding: 10px">Search for a GradeSpot Session</h1>
+            <form method="post">
+                <div class="row">
+                    <div class="col-sm">
+                        <input type="search" placeholder="Search for a Program" class="form-control rounded" name="search_input" id="search_input" />
+                    </div>
+                    <div class="col-sm">
+                        <input type="submit" class="btn btn-primary" name="search_session" value="Search">
+                    </div>
                 </div>
-                <div class="col-sm">
-                    <input type="submit" class="btn btn-primary" name="search_session" value="Search">
-                </div>
-            </div>
 
-        </form>
+            </form>
 
         </div>
     </div>

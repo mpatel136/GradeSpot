@@ -80,12 +80,12 @@
                             <div class="row">
                                 <div class="form-group col-md">
                                     <label for="password" class="credentials">Password</label>
-                                    <input type="text" class="form-control" name="password" id="password" />
+                                    <input type="password" class="form-control" name="password" id="password" />
                                 </div>
 
                                 <div class="form-group col-md">
                                     <label for="confirm_password" class="credentials">Confirm Password</label>
-                                    <input type="text" class="form-control" name="confirm_password" id="confirm_password" />
+                                    <input type="password" class="form-control" name="confirm_password" id="confirm_password" />
                                 </div>
                             </div>
 

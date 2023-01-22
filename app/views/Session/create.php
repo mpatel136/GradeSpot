@@ -55,20 +55,28 @@
                 <form action="" method="post" class="form-horizontal">
                     <label class="credentials"> University </label>
                     <select class="form-control form-control-lg" style="margin-bottom: 40px" name="university_id" id="university_id">
-                      <option selected disabled>Select a University</option>
-                      <option value="1">Concordia University</option>
-                      <option value="2">McGill University</option>
-                      <option value="3">Harvard University</option>
+                        <option selected disabled>Select a University</option>
+                        <option value="1">Concordia University</option>
+                        <option value="2">McGill University</option>
+                        <option value="3">Harvard University</option>
                     </select>
 
                     <div class="form-group row" style="margin-bottom: 40px">
                         <div class="col-md">
                             <label for="program_id" class="credentials">Program</label>
-                            <input type="text" class="form-control" name="program_id" id="program_id" />
+                            <select class="form-control form-control-lg" style="margin-bottom: 40px" name="program_id" id="program_id">
+                                <option selected disabled>Select your Program</option>
+                                <option value="1">COMP</option>
+                                <option value="2">SOEN</option>
+                            </select>
                         </div>
                         <div class="col-md">
                             <label for="subject_id" class="credentials">Subject</label>
-                            <input type="text" class="form-control" name="subject_id" id="subject_id" />
+                            <select class="form-control form-control-lg" style="margin-bottom: 40px" name="subject_id" id="subject_id">
+                                <option selected disabled>Select your Subject</option>
+                                <option value="1">335</option>
+                                <option value="2">341</option>
+                            </select>
                         </div>
                     </div>
 

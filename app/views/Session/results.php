@@ -26,46 +26,54 @@
 
 
 <body>
-  
+
+  <div class="container">
     <?php
-    // var_dump($model['result']);
-    $session_obj = $model['result'];
-    
-    echo "
-      <table class='table' style='color: black'>
-        <thead>
-          <tr>
-            <th scope='col'>Session</th>
-            <th scope='col'>Join</th>
-            <th scope='col'>Subject</th>
-            <th scope='col'>Number of participants</th>
-            <th scope='col'>Room #</th>
-          </tr>
-        </thead>
-        <tbody>
-        ";
-        foreach($session_obj as $obj) {
-          
-          $session_token = $obj->session_token;
-
-
+      // var_dump($model['result']);
+      $session_obj = $model['result'];
+      
       echo "
+        <table class='table' style='color: black'>
+          <thead>
             <tr>
-              <th>$session_token</th>
-              <th><form action='./join/{$session_token}'>
-                <input class='btn btn-primary' type='submit' value='Join Session' />
-            </form></th>
-              <td>$obj->subject_id</td>
-              <td>$obj->participant_count</td>
-              <td>$obj->room_id</td>
+              <th scope='col'>Session</th>
+              <th scope='col' class='text-center'>Program</th>
+              <th scope='col' class='text-center'>Subject</th>
+              <th scope='col' class='text-center'># of participants</th>
+              <th scope='col' class='text-center'>Room #</th>
+              <th scope='col' class='text-center'>Join</th>
             </tr>
+          </thead>
+          <tbody>
           ";
-        }
-        echo "
-        </tbody>
-      </table>
-    "
-    ?>
+          foreach($session_obj as $obj) {
+            
+            $session_token = $obj->session_token;
+            $program = $this->model('Program')->getProgramName($obj->program_id)->program_name;
+            $subject = $this->model('Subject')->getSubjectName($obj->subject_id)->subject_number;
+            $room_id = $obj->room_id;
+
+            echo "
+                  <tr>
+                    <td>$session_token</td>
+                    <td class='text-center'>$program</td>
+                    <td class='text-center'>$subject</td>
+                    <td class='text-center'>$obj->participant_count</td>
+                    <td class='text-center'>$room_id</td>
+                    <td class='text-center'>
+                      <a href='/session/join/$session_token' class='btn btn-primary' style='height: 24px; width: 40px; font-size: 15px; padding: 0px;'>Join</a>
+                    </td>
+                  </tr>
+                ";
+              }
+          echo "
+          </tbody>
+        </table>
+      "
+      ?>
+  </div>
+  
+   
 
 </body>
 

@@ -59,10 +59,18 @@
                     <div style="color: black; padding: 10px; margin-bottom: 20px; font-family: Arial, Helvetica, sans-serif;">
                         <div style="font-size: 17px; text-align: center;">
                             <span class="badge badge-success" style="font-size: 12px; margin-right: 10px;">Session Info</span>
+                            <?php
+                                $session_obj = $model['session_obj'];
+                                
+                                $program = $this->model('Program')->getProgramName($session_obj->program_id)->program_name;
+                                $subject = $this->model('Subject')->getSubjectName($session_obj->subject_id)->subject_number;
 
-                            <span>Concordia University</span> &nbsp; &bull; &nbsp;
-                            <span>Software Engineering</span> &nbsp; &bull; &nbsp;
-                            <span>SOEN 331</span>
+                                echo "
+                                    <span>Concordia University</span> &nbsp; &bull; &nbsp;
+                                    <span>$program</span> &nbsp; &bull; &nbsp;
+                                    <span>$subject</span>
+                                ";
+                            ?>
                         </div>
                     </div>
                 </div>

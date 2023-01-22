@@ -62,7 +62,7 @@
 
             <div class="form-group" style="margin-bottom: 50px;">
                 <label for="password" class="credentials">Password</label>
-                <input type="text" class="form-control" name="password" id="password" />
+                <input type="password" class="form-control" name="password" id="password" />
             </div>
 
 

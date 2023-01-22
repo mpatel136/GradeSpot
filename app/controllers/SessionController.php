@@ -8,16 +8,16 @@ class SessionController extends Controller{
             echo 'do not allow to join a session';
         }
         else {
+            $session_obj = $this->model('Session')->getBySessionToken($session_token);
             // echo "current ongoing session is: " . $session_id;
             if(isset($_POST['exit_chat'])) {
                 $_SESSION['exit_chat'] = true;
-                $session_obj = $this->model('Session')->getBySessionToken($session_token);
                 $session_obj->participant_count--;
                 $session_obj->increaseParticipant();
 
                 header('location:/');
             }
-            $this->view('Session/in_session');
+            $this->view('Session/in_session', ['session_obj'=>$session_obj]);
         }
 	}
 
