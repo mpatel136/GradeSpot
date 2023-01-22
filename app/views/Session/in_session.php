@@ -22,6 +22,22 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <script src="/js/bootstrap.js"></script>
+
+        <style>
+            /* styles for the canvas element */
+            canvas {
+            border: 1px solid black;
+            }
+            /* Styles for the buttons */
+            .color-button {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                margin: 5px;
+                cursor: pointer;
+                border: 1px solid #000;
+            }
+        </style>  
     </head>
     <body>
         <div class="container-fluid">
@@ -53,9 +69,22 @@
             </div>
             
             <div class="row" style="margin: 0px 0px;">
-                <div class="col-8" style="background: black; padding: 10px;">
-                    White board section
+                <div class="col-8">
+                    <canvas id="whiteboard"></canvas>
+                    <div>
+                        <button class="color-button" style="background-color: black;" onclick="setColor('black')"></button>
+                        <button class="color-button" style="background-color: red;" onclick="setColor('red')"></button>
+                        <button class="color-button" style="background-color: blue;" onclick="setColor('blue')"></button>
+                        <button class="color-button" style="background-color: green;" onclick="setColor('green')"></button>
+
+                        <button class="color-button" style="background-color: white;" onclick="setColor('white')"></button>
+                    </div>
+
+                    <div>
+                        <button onclick="saveAsPNGWithWhiteBg()">Save as PNG</button>
+                    </div>
                 </div>
+
                 <div class="col-4" style="background-color: rgb(160, 115, 115);">
                     <div id="wrapper_chat">
                         <div id="menu_chat">
@@ -120,4 +149,138 @@
             </div>
         </div>
     </body>
+
+    <script>
+    // get reference to the canvas element
+    var canvas = document.getElementById("whiteboard");
+
+    // set the canvas dimensions
+    canvas.width = 800;
+    canvas.height = 600;
+
+    // get the 2D rendering context
+    var ctx = canvas.getContext("2d");
+
+    // flag to track whether the user is currently drawing
+    var isDrawing = false;
+
+    // starting position of the line
+    var x = 0;
+    var y = 0;
+
+    // add event listeners for user input
+    canvas.addEventListener("mousedown", startDrawing);
+    canvas.addEventListener("mousemove", draw);
+    canvas.addEventListener("mouseup", stopDrawing);
+
+    // color of the marker
+    var color = "black";
+
+    // color of the marker
+    var color = "black";
+    var eraser = false;
+
+    function setColor(newColor) {
+        if (newColor === "white") {
+            eraser = true;
+        } else {
+            color = newColor;
+            eraser = false;
+        }
+    }
+
+
+    function startDrawing(e) {
+      // update the flag and starting position
+      isDrawing = true;
+      x = e.clientX;
+      y = e.clientY;
+    }
+
+    function draw(e) {
+      if (isDrawing) {
+        // set the color and line width
+        ctx.strokeStyle = eraser ? "white" : color;
+        ctx.lineWidth = eraser ? 20 : 2;
+
+        // begin a new path
+        ctx.beginPath();
+
+        // move the cursor to the starting position
+        ctx.moveTo(x, y);
+
+        // update the ending position and draw the line
+        x = e.clientX;
+        y = e.clientY;
+        ctx.lineTo(x, y);
+
+        // render the path on the canvas
+        ctx.stroke();
+      }
+    }
+
+    function stopDrawing() {
+      // update the flag
+      isDrawing = false;
+    }
+
+    function saveAsPNG() {
+        // get the canvas content as a data URI
+        var dataURL = canvas.toDataURL();
+        // create a temporary link element
+        var link = document.createElement("a");
+        // set the link's href to the data URI
+        link.href = dataURL;
+        // set the link's download attribute
+        link.download = "whiteboard.png";
+        // simulate a click on the link
+        link.click();
+        // remove the link from the DOM
+        link.remove();
+    }
+
+    function saveAsJPG() {
+        // get the canvas content as a data URI
+        var dataURL = canvas.toDataURL("image/jpeg");
+        // create a temporary link element
+        var link = document.createElement("a");
+        // set the link's href to the data URI
+        link.href = dataURL;
+        // set the link's download attribute
+        link.download = "whiteboard.jpg";
+        // simulate a click on the link
+        link.click();
+        // remove the link from the DOM
+        link.remove();
+    }
+
+    function saveAsPNGWithWhiteBg() {
+        // create a new canvas element
+        var tempCanvas = document.createElement("canvas");
+        // set the new canvas dimensions
+        tempCanvas.width = canvas.width;
+        tempCanvas.height = canvas.height;
+
+        // get the 2D rendering context for the new canvas
+        var tempCtx = tempCanvas.getContext("2d");
+        // fill the new canvas with white background
+        tempCtx.fillStyle = "white";
+        tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+        // draw the original canvas content onto the new canvas
+        tempCtx.drawImage(canvas, 0, 0);
+
+        // get the canvas content as a data URI
+        var dataURL = tempCanvas.toDataURL();
+        // create a temporary link element
+        var link = document.createElement("a");
+        // set the link's href to the data URI
+        link.href = dataURL;
+        // set the link's download attribute
+        link.download = "whiteboard.png";
+        // simulate a click on the link
+        link.click();
+        // remove the link from the DOM
+        link.remove();
+    }
+  </script>
 </html>
