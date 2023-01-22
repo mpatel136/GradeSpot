@@ -310,10 +310,24 @@ button {
   letter-spacing: 3px;
 }
 
+.formheader {
+  font-size: 60px;
+  color: white;
+  transform: translateY(150%);
+  font-family: "Bariol" !important;
+  font-weight: bolder;
+  letter-spacing: 10px;
+}
+
 .maintext {
   transform: translateY(20%);
   font-size: 15px;
   letter-spacing: 1px;
+}
+
+label.credentials {
+  color: #3e91f7;
+  font-size: 15px;
 }
 
 
