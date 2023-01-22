@@ -67,7 +67,43 @@ class SessionController extends Controller{
     }
 
     public function search() {
-        echo "searching session";
+        
+        // if(isset($_SESSION["result"])) {
+        //     echo "lsdjfsd";
+        //     echo $_SESSION['result'];
+        //     $this->view('Session/search');
+        // }
+        // else 
+        if(!isset($_POST['search_session'])) {
+            $this->view('Session/search');
+        }
+        else{
+            
+            $program_name = $_POST['search_input'];
+            
+            // var_dump($session_data);
+
+            // create session model
+            $program = $this->model('Program')->getProgramId($program_name);
+            // $program->program_name = $session_data;
+
+            // Search session table
+            $session_obj = $this->model('Session')->getAllSessionByProgramId($program->program_id);
+
+            $_SESSION["result"] = $session_obj;
+            //var_dump($_SESSION["result"]);
+
+            $this->view('Session/search');
+            $this->view('Session/results');
+
+            
+            // $this->view('Session/results');
+            
+        }
+    }
+
+    public function results(){
+        echo $_SESSION["result"];
     }
 
     public function join() {

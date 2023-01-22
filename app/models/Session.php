@@ -28,5 +28,12 @@ class Session extends Model{
                         'room_id'=>$this->room_id]);
     }
 
+    public function getAllSessionByProgramId($program_id){
+        $stmt = self::$_connection->prepare("SELECT * FROM session WHERE program_id = :program_id");
+        $stmt->execute(['program_id'=>$program_id]);
+    	$stmt->setFetchMode(PDO::FETCH_CLASS, 'Session');
+		return $stmt->fetchAll();
+    }
+
 
 }
