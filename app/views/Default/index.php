@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
         <title> GradeSpot</title>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -26,12 +27,19 @@
 					<h4 style="font-size: 40px; color: black; padding: 10px;">
 						<div class="row">
 							<div class="col-10">
-								<div style="text-align: left;">
+								<div style="text-align: left; font-weight: bold;">
 									GradeSpot
 								</div>
 							</div>
-							<div class="col-2" style="text-align: right;">
-								<img src="/images/user.png" alt="Profile" width="28" onclick="location.href='/account/login'" style="cursor: pointer;">
+							<div class="col-2 home-login-lb" style="text-align: right;">
+								<?php
+									if(isset($_SESSION['account_id'])) {
+										echo "
+											<span style='font-size: 20px;'>Khalid</span>
+										";
+									}
+								?>
+								<img src="/images/user.png" alt="Profile" width="28" onclick="location.href='/account/login'" style="cursor: pointer; vertical-align: middle;">
 							</div>
 						</div>
 					</div>

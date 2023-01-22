@@ -19,13 +19,26 @@ class Session extends Model{
     }
 
     public function insert(){
-        $stmt = self::$_connection->prepare("INSERT INTO session(university_id, program_id, subject_id, is_private, is_in_person, room_id) VALUES(:university_id, :program_id, :subject_id, :is_private, :is_in_person, :room_id)");
+        $stmt = self::$_connection->prepare("INSERT INTO session(session_token, university_id, program_id, subject_id, is_private, is_in_person, room_id) 
+                                            VALUES(:session_token, :university_id, :program_id, :subject_id, :is_private, :is_in_person, :room_id)");
         $stmt->execute(['university_id'=>$this->university_id,
+                        'session_token'=>$this->session_token,
                         'program_id'=>$this->program_id,
                         'subject_id'=>$this->subject_id,
                         'is_private'=>$this->is_private,
                         'is_in_person'=>$this->is_in_person,
                         'room_id'=>$this->room_id]);
+        $id = self::$_connection->lastInsertId();
+        return $id;
+    }
+
+    public function insertForUniversity(){
+        $stmt = self::$_connection->prepare("INSERT INTO session(session_token, university_id, room_id) 
+                                            VALUES(:session_token, :university_id, :room_id)");
+        $stmt->execute(['university_id'=>$this->university_id,
+                        'session_token'=>$this->session_token,
+                        'room_id'=>$this->room_id]);
+        $_SESSION['register_room_session_id'] = self::$_connection->lastInsertId();
     }
 
     public function getAllSessionByProgramId($program_id){
@@ -34,6 +47,7 @@ class Session extends Model{
     	$stmt->setFetchMode(PDO::FETCH_CLASS, 'Session');
 		return $stmt->fetchAll();
     }
+
 
 
 }

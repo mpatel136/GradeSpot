@@ -294,9 +294,14 @@ button {
 
 /*# sourceMappingURL=style.css.map */
 
+.home-login-lb {
+  color: #676565;
+}
+
 .con-navbar {
-  box-shadow: 0px 15px 10px -15px #111; 
+  box-shadow: 0px 15px 10px -15px rgb(174, 169, 169); 
   /* box-shadow: 0 4px 2px -2px gray; */
+  font-family: "Bariol";
 }
 
 .mainheader {
@@ -358,6 +363,18 @@ label.credentials {
 .bg-home-content button.create-session-btn:hover {
   background: #ec8a39;
   border-color: #ec8a39;
+}
+
+.register-section {
+  color: black;
+  font-family: "Bariol" !important;
+}
+
+.register-section .room-search button.btn-primary {
+  font-size: 12px !important;
+  font-family: "Bariol" !important;
+  width: 80px;
+  margin-top: 0px;
 }
 
 form {
@@ -490,4 +507,16 @@ a#exit {
 
 .msgln b.user-name-left {
   background: orangered;
+}
+
+.register-section {
+  color: black;
+  font-family: "Bariol" !important;
+}
+
+.register-section .room-search button.btn-primary {
+  font-size: 12px !important;
+  font-family: "Bariol" !important;
+  width: 80px;
+  margin-top: 0px;
 }

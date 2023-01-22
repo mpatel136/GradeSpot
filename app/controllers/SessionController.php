@@ -1,4 +1,6 @@
 <?php
+require_once 'phpqrcode/qrlib.php';
+
 class SessionController extends Controller{
 	public function index($session_id = null) {
         
@@ -19,6 +21,10 @@ class SessionController extends Controller{
 
     public function create() {
         
+        if(isset($_SESSION['account_id'])) {
+            return header('location:/session/register');
+        }
+
         if(!isset($_POST['create_session'])) {
             $this->view('Session/create');
         }
@@ -38,7 +44,7 @@ class SessionController extends Controller{
                 $is_in_person = 1;
             }
 
-            $room_id = 69;
+            $room_id = 2;
             //$date = $_POST['date'];
             // $participant_count = $_POST['participant_count'];
             // $status = $_POST['status'];
@@ -46,6 +52,7 @@ class SessionController extends Controller{
 
             // create session model
             $session = $this->model('Session');
+            $session->session_token = $this->getToken(20);
             $session->university_id = $university_id;
             $session->program_id = $program_id;
             $session->subject_id = $subject_id;
@@ -64,6 +71,71 @@ class SessionController extends Controller{
 
         }
 
+    }
+
+    public function register() {
+        $room_obj = null;
+
+        
+
+        if(isset($_POST['register_room'])) {
+            // uni id
+            $university_id = $this->model('Account')->getUniversityId($_SESSION['account_id'])->university_id;
+
+            // create session for that room
+            $session_token = $this->getToken(20);
+            $session = $this->model('Session');
+            $session->session_token = $session_token;
+            $session->university_id = $university_id;
+            $session->room_id = $_SESSION['room_id_reg'];
+            
+            $session->insertForUniversity();
+
+            // generate qr code for this session
+            $url = "/session/index/" . $session_token;
+
+            // set QR code error correction level
+            $errorCorrectionLevel = 'L';
+        
+            // set QR code size
+            $matrixPointSize = 4;
+
+            $upOne = dirname(__DIR__, 2);
+            
+            // generate QR code
+            QRcode::png($url, "$upOne/images/qr_codes/$session_token.png", $errorCorrectionLevel, $matrixPointSize, 2);
+
+            $last_inserted_session_id = $_SESSION['register_room_session_id'];
+            $qr_code_obj = $this->model('QRCodeModel');
+            $qr_code_obj->qr_code_name = $session_token;
+            $qr_code_obj->session_id = $last_inserted_session_id;
+            $qr_code_obj->insert();
+
+
+            // Change room's status to already assigned
+            $room_obj = $this->model('Room')->findById($_SESSION['room_id_reg']);
+            $room_obj->status = 1;
+            $room_obj->updateStatus();
+
+            // Pass the room info to the view
+            $this->view('Session/register', ['room_obj'=>$room_obj, 'qr_code'=>$session_token . '.png']);
+        }
+        else if(!isset($_POST['search_room'])) {
+            $this->view('Session/register');
+        }
+        else {
+            $room_no = $_POST['room_no'];
+            
+            $room_obj = $this->model('Room')->find($room_no);
+            if($room_obj != null) {
+                $_SESSION['room_id_reg'] = $room_obj->room_id;
+                
+                $this->view('Session/register', ['room_obj'=>$room_obj]);
+            }
+            else {
+                $this->view('Session/register', ['error'=>'Can not find the room you entered.', 'room_number'=>$room_no]);
+            }
+        }
     }
 
     public function search() {

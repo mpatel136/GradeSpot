@@ -20,6 +20,13 @@ class Account extends Model{
         return $stmt->fetch();
     }
 
+    public function getUniversityId($account_id){
+        $stmt = self::$_connection->prepare("SELECT university_id FROM account WHERE account_id = :account_id");
+        $stmt->execute(['account_id'=>$account_id]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Account');
+        return $stmt->fetch();
+    }
+
     public function insert(){
 	    $stmt = self::$_connection->prepare("INSERT INTO account(first_name, last_name, university_id, email, password) VALUES(:first_name, :last_name, :university_id, :email, :password)");
         $stmt->execute(['first_name'=>$this->first_name,

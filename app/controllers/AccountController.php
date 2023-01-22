@@ -38,6 +38,10 @@ class AccountController extends Controller{
     }
 
     public function login() {
+        if(isset($_SESSION['account_id'])) {
+            return header('location:/');
+        }
+
         if(!isset($_POST['login'])) {
             $this->view('Account/login');
         }
@@ -54,7 +58,9 @@ class AccountController extends Controller{
             else {
                 // verify pass
                 if(password_verify($password, $account->password)) {
-                    echo 'account';
+                    $_SESSION['account_id'] = $account->account_id;
+
+                    return header('location:/');
                 }
                 else {
                     $this->view('Account/login', ['error'=>'Invalid username or password.']);
@@ -67,8 +73,11 @@ class AccountController extends Controller{
 
     }
 
-    public function get_name(){
-        
+    public function logout() {
+        session_destroy();
+
+		header('location:/');
     }
+
 }
 ?>
