@@ -22,7 +22,7 @@
 </head>
 <body>
 <div class="container-fluid">
-    <div class="con-navbar">
+    <div class="con-navbar" style="margin-bottom:1px">
         <div>
             <h4 style="font-size: 40px; color: black; padding: 10px;">
 

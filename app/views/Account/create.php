@@ -21,7 +21,29 @@
     </head>
     <body>
         <div class="container-fluid">
-
+            <div class="con-navbar" style="margin-bottom:1px">
+            				<div>
+            					<h4 style="font-size: 40px; color: black; padding: 10px;">
+            						<div class="row">
+            							<div class="col-10">
+            								<div style="text-align: left; font-weight: bold;">
+            									GradeSpot
+            								</div>
+            							</div>
+            							<div class="col-2 home-login-lb" style="text-align: right;">
+            								<?php
+            									if(isset($_SESSION['account_id'])) {
+            										echo "
+            											<span style='font-size: 20px;'>Khalid</span>
+            										";
+            									}
+            								?>
+            								<img src="/images/user.png" alt="Profile" width="28" onclick="location.href='/account/login'" style="cursor: pointer; vertical-align: middle;">
+            							</div>
+            						</div>
+            					</div>
+            				</div>
+            			</div>
             <div class="row">
                 <div class="col-md" style="background-color:#3e91f7; text-align: center">
 
