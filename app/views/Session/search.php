@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <title> GradeSpot</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -19,10 +18,12 @@
 
     <!-- STYLE CSS -->
     <link rel="stylesheet" href="/css/style.css">
+    
 
 </head>
 
 <body>
+    
     <div class="container-fluid">
         <div class="con-navbar">
             <div>
@@ -42,6 +43,7 @@
         </div>
 
         <div class="container" style=" padding: 10px">
+        <h1 style="color:black; padding: 10px">Search for a GradeSpot Session</h1>
         <form method="post">
             <div class="row">
                 <div class="col-sm">
