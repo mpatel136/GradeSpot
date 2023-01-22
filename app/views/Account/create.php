@@ -1,52 +1,78 @@
 <html>
-<head>
-	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
-	<script src="/js/jquery-3.2.1.min.js"></script>
-	<script src="/js/bootstrap.js"></script>
-	<title>Create an account</title>
-</head>
-<body>
-<div class="container">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+        <script src="/js/jquery-3.2.1.min.js"></script>
+        <script src="/js/bootstrap.js"></script>
+        <title>Create an account</title>
 
-	<h1>Sign up</h1>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <?php if(isset($model['error']))
-        echo "<div class='alert alert-danger' role='alert'>$model[error]</div>";
-	?>
+        <!-- LINEAR ICONS -->
+        <link rel="stylesheet" href="/fonts/linearicons/style.css">
 
-	<form action="" method="post" class="form-horizontal">
-        <div class="form-group">
-            <label for="first_name">First name</label>
-            <input type="text" class="form-control" name="first_name" id="first_name" />
+        <!-- MATERIAL DESIGN ICONIC FONT -->
+        <link rel="stylesheet" href="/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+        <!-- DATE-PICKER -->
+        <link rel="stylesheet" href="/vendor/date-picker/css/datepicker.min.css">
+
+        <!-- STYLE CSS -->
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md" style="background-color:#3e91f7; text-align: center">
+
+                </div>
+
+                <div class="col-md">
+                    <h3 style="padding: 15% 46px 0px">Sign up</h3>
+                        <?php if(isset($model['error']))
+                            echo "<div class='alert alert-danger' role='alert'>$model[error]</div>";
+                        ?>
+
+                        <form action="" method="post" class="form-horizontal" style="padding: 40px 46px 2px; display: inline-block;">
+                            <div class="row">
+                                <div class="form-group col-md">
+                                    <label for="first_name" class="credentials">First name</label>
+                                    <input type="text" class="form-control" name="first_name" id="first_name" />
+                                </div>
+                                <div class="form-group col-md">
+                                    <label for="last_name" class="credentials">Last name</label>
+                                    <input type="text" class="form-control" name="last_name" id="last_name" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="university_id" class="credentials">University</label>
+                                <input type="text" class="form-control" name="university_id" id="university_id" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="credentials">Email Address</label>
+                                <input type="text" class="form-control" name="email" id="email" />
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md">
+                                    <label for="password" class="credentials">Password</label>
+                                    <input type="text" class="form-control" name="password" id="password" />
+                                </div>
+
+                                <div class="form-group col-md">
+                                    <label for="confirm_password" class="credentials">Confirm Password</label>
+                                    <input type="text" class="form-control" name="confirm_password" id="confirm_password" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" name="create_user" value="Create an account" class="btn btn-primary" />
+                            </div>
+                        </form>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="last_name">Last name</label>
-            <input type="text" class="form-control" name="last_name" id="last_name" />
-        </div>
-
-        <div class="form-group">
-            <label for="university_id">University</label>
-            <input type="text" class="form-control" name="university_id" id="university_id" />
-        </div>
-
-        <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="text" class="form-control" name="email" id="email" />
-        </div>
-
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="text" class="form-control" name="password" id="password" />
-        </div>
-
-        <div class="form-group">
-            <label for="confirm_password">Confirm Password</label>
-            <input type="text" class="form-control" name="confirm_password" id="confirm_password" />
-        </div>
-
-        <div class="form-group">
-            <input type="submit" name="create_user" value="Create an account" />
-        </div>
-	</form>
-</div>
-</body></html>
+    </body>
+ </html>
