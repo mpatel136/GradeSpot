@@ -91,8 +91,14 @@
                                 }
 
                                 echo "
-                                    <p onclick='myFunction()' class=''><a id='ask' href='#'>Ask the Presenter</a></p>
-                                    <p class=''><a id='exit_chat' href='\index'>Exit Chat</a></p>
+                                    <button onclick='myFunction();' class='btn btn-primary' style='padding: 0px; margin: -9px; width: 150px; font-size: 13px; height: 25px; margin-left: 0px; margin-top: -2px;'>Ask the Presenter</button>
+                                    <form method='post' style='padding: 0px; width: 0%; float: right;'>
+                                        ";
+                                        ?>
+                                        <button class='btn btn-primary' name="exit_chat" style="padding: 0px; margin: -9px; width: 100px; font-size: 13px; height: 25px; margin-left: 116px;">Exit Chat</button>
+                                    <?php
+                                    echo "
+                                    </form>
                                 ";
                             ?>
                             <!-- <p class='welcome_chat'>Welcome, $current_user.<b></b></p> -->

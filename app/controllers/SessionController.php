@@ -2,13 +2,21 @@
 require_once 'phpqrcode/qrlib.php';
 
 class SessionController extends Controller{
-	public function index($session_id = null) {
+	public function index($session_token = null) {
         
-        if($session_id == null) {
+        if($session_token == null) {
             echo 'do not allow to join a session';
         }
         else {
             // echo "current ongoing session is: " . $session_id;
+            if(isset($_POST['exit_chat'])) {
+                $_SESSION['exit_chat'] = true;
+                $session_obj = $this->model('Session')->getBySessionToken($session_token);
+                $session_obj->participant_count--;
+                $session_obj->increaseParticipant();
+
+                header('location:/');
+            }
             $this->view('Session/in_session');
         }
 	}
