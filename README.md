@@ -19,4 +19,4 @@ We built GradeSpot using PHP for application logic control. HTML, CSS, jQuery, a
 - Khalid Sadat (Software Engineering Student)
 - Emmanuel Sayoto (Computer Science Student)
 - Timothy Mangulabnan (Computer Science Student)
-- Miraj Singh (Computer Science Student)
+- Miraj Patel (Computer Science Student)
